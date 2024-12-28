@@ -22,7 +22,7 @@ for line in input_file:
 				break
 
 	if safe == True:
-		number_of_safe_reports = number_of_safe_reports + 1
+		number_of_safe_reports += 1
 
 print("Number of safe reports:", number_of_safe_reports)
 
