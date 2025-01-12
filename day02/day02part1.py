@@ -31,4 +31,4 @@ with open(Path(BASE_DIR, "day02_input"), "r", encoding="utf8") as file:
         if report_is_safe:
             number_of_safe_reports += 1
 
-print("Number of safe reports:", number_of_safe_reports)
+print(f"The number of safe reports is {number_of_safe_reports}")

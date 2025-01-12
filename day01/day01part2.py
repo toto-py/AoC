@@ -17,4 +17,4 @@ for i, left_number in enumerate(left_list):
     appearances_in_right_list = right_list.count(left_number)
     similarity_score = similarity_score + (left_number * appearances_in_right_list)
 
-print("The similarity score is", similarity_score)
+print(f"The similarity score is {similarity_score}")
