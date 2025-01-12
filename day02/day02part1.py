@@ -1,29 +1,34 @@
-input_file = open("input")
+""" Advent of Code - Day 2 Part 1 """
+from pathlib import Path
+BASE_DIR = Path(__file__).resolve().parent
 
-number_of_safe_reports = 0
+number_of_safe_reports: int = 0
+report_is_safe: bool = False
 
-for line in input_file:
-	l = [int(x) for x in line.split()]
+with open(Path(BASE_DIR, "day02_input"), "r", encoding="utf8") as file:
+    for line in file:
+        line_items = [int(x) for x in line.split()]
 
-	if l[0] < l[1]:
-		for i in range(len(l) - 1):
-			if l[i] < l[i + 1] and 1 <= l[i + 1] - l[i] <= 3:
-				safe = True
-			else:
-				safe = False
-				break
+        if line_items[0] < line_items[1]:
+            for i in range(len(line_items) - 1):
+                report_is_safe = (
+                    line_items[i] < line_items[i + 1]
+                    and
+                    1 <= line_items[i + 1] - line_items[i] <= 3
+                )
+                if report_is_safe is not True:
+                    break
+        else:
+            for i in range(len(line_items) - 1):
+                report_is_safe = (
+                    line_items[i] > line_items[i + 1]
+                    and
+                    1 <= line_items[i] - line_items[i + 1] <= 3
+                )
+                if report_is_safe is not True:
+                    break
 
-	else:
-		for i in range(len(l) - 1):
-			if l[i] > l[i + 1] and 1 <= l[i] - l[i + 1] <= 3:
-				safe = True
-			else:
-				safe = False
-				break
-
-	if safe == True:
-		number_of_safe_reports += 1
+        if report_is_safe:
+            number_of_safe_reports += 1
 
 print("Number of safe reports:", number_of_safe_reports)
-
-input_file.close()
