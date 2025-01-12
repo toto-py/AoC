@@ -1,8 +1,11 @@
-"""Advent of Code - Day 1 Part 1"""
+""" Advent of Code - Day 1 Part 1 """
+from pathlib import Path
+BASE_DIR = Path(__file__).resolve().parent
 
-with open("day01/input", "r", encoding="utf8") as file:
-    left_list = []
-    right_list = []
+left_list: list[int] = []
+right_list: list[int] = []
+
+with open(Path(BASE_DIR, "day01_input"), "r", encoding="utf8") as file:
     for line in file:
         line_items = [int(x) for x in line.split()]
         left_list.append(line_items[0])
@@ -13,7 +16,7 @@ right_list.sort()
 
 distance: int = 0
 
-for x in range(len(left_list)):
-    distance = distance + abs(left_list[x] - right_list[x])
+for i in range(len(left_list)):
+    distance = distance + abs(left_list[i] - right_list[i])
 
 print(f"The total distance between the lists is {distance}")
