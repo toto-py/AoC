@@ -13,4 +13,4 @@ with open(Path(BASE_DIR, "day03_input"), "r", encoding="utf8") as file:
             numbers = [int(x) for x in match]
             result += numbers[0] * numbers[1]
 
-print(f"The result of the multiplication is {result}.")
+print(f"The result of the multiplication is {result:_}.")
